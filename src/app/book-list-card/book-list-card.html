@@ -1,0 +1,30 @@
+@let b = book();
+<mat-card class="book-card">
+  <mat-card-content>
+    <div class="book-layout">
+      @if (b.images && b.images[0]) {
+        <img
+          class="book-cover"
+          [src]="b.images[0].url"
+          [alt]="b.title"
+        />
+      }
+      <div class="book-info">
+        <div class="title">
+          {{ b.title }}
+        </div>
+        <div class="subtitle">
+          {{ b.subtitle }}
+        </div>
+        <div class="authors">
+          @for (author of b.authors; track author.id; let l = $last) {
+            {{ author.firstName }} {{ author.lastName }}@if(!l){, }
+          }
+        </div>
+        <div class="isbn">
+          ISBN {{ b.isbn }}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

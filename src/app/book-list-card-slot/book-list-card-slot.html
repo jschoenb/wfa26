@@ -1,0 +1,23 @@
+<mat-card class="book-card">
+  <mat-card-content>
+    <div class="book-layout">
+      <div class="book-cover">
+        <ng-content select="[cover]"></ng-content>
+      </div>
+      <div class="book-info">
+        <div class="title">
+          <ng-content select="[title]"></ng-content>
+        </div>
+        <div class="subtitle">
+          <ng-content select="[subtitle]"></ng-content>
+        </div>
+        <div class="authors">
+          <ng-content select="[authors]"></ng-content>
+        </div>
+        <div class="extra">
+          <ng-content select="[meta]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,38 @@
+.book-card {
+  cursor: pointer;
+}
+
+.book-layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.book-cover {
+  width: 70px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+.authors {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.isbn {
+  margin-top: 6px;
+  font-size: 12px;
+}

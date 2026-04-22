@@ -1,0 +1,27 @@
+<div class="book-list">
+  @for (book of books; track book.isbn) {
+    <!--<bs-book-list-card [book]="book"></bs-book-list-card>-->
+    <bs-book-list-card-slot>
+    @if (book.images && book.images[0]){
+      <img
+        cover
+        class="book-cover-img"
+        [src]="book.images[0].url"
+        [alt]="book.title"
+      />
+    }
+
+    <span title>{{book.title}}</span>
+
+    <span subtitle>{{book.subtitle}}</span>
+
+    <span authors>
+        @for (author of book.authors; track author.id; let l = $last) {
+          {{ author.firstName }} {{ author.lastName }}@if(!l){, }
+        }
+    </span>
+
+    <span meta>ISBN{{book.isbn}}</span>
+  </bs-book-list-card-slot>
+  }
+</div>
