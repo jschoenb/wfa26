@@ -1,7 +1,7 @@
 <div class="book-list">
   @for (book of books; track book.isbn) {
     <!--<bs-book-list-card [book]="book"></bs-book-list-card>-->
-    <bs-book-list-card-slot (click)="showDetails(book)">
+    <bs-book-list-card-slot [routerLink]="book.isbn">
     @if (book.images && book.images[0]){
       <img
         cover

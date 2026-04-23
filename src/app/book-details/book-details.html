@@ -61,11 +61,22 @@
         }
       </div>
       <!-- Back Button -->
-      <button mat-raised-button color="primary" (click)="showBookList()">
+      <button mat-raised-button color="primary" [routerLink]="'/books'">
         <mat-icon>arrow_back</mat-icon>
         Zurück zur Buchliste
       </button>
     </mat-card-content>
   </mat-card>
+
+  <h2>Testing the subnavigation</h2>
+  <nav>
+    <ul>
+      <li><a [routerLink]="'/books/'+b.isbn+'/first'">
+        Erste Komponente</a></li>
+      <li><a [routerLink]="'/books/'+b.isbn+'/second'">
+        Zweite Komponente</a></li>
+    </ul>
+  </nav>
+  <router-outlet/>
 }
 

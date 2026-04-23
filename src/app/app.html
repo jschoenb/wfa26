@@ -1,6 +1,24 @@
-@if(listOn){
-  <bs-book-list (showDetail)="showDetail($event)"></bs-book-list>
-} @else if (detailsOn && book){
-  <bs-book-details [book]="book" (showList)="showList()"/>
-}
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link
+     routerLink="/home"
+     routerLinkActive
+     #rlaHome ="routerLinkActive"
+     [active]="rlaHome.isActive"
+  >Home</a>
+  <a mat-tab-link
+     routerLink="/books"
+     routerLinkActive
+     #rlaBooks ="routerLinkActive"
+     [active]="rlaBooks.isActive"
+  >Bücher</a>
+</nav>
+
+<mat-tab-nav-panel #tabPanel>
+  <div class="container">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-tab-nav-panel>
+
 
