@@ -1,0 +1,71 @@
+@let b = book();
+@if (b) {
+  <mat-card>
+    <mat-card-content>
+      <!-- Top Section -->
+      <div class="top-section">
+        <!-- Cover -->
+        @if (b.images?.[0]?.url; as url) {
+          <img
+            class="cover"
+            [src]="url"
+            [alt]="b.title"
+          />
+        }
+        <!-- Content -->
+        <div class="content">
+          <h1 class="mat-headline-medium primary-text" >
+            {{ b.title }}
+          </h1>
+          <h2 class="mat-title-medium secondary-text">
+            {{ b.subtitle }}
+          </h2>
+          <mat-divider class="divider"></mat-divider>
+          <!-- Meta -->
+          <div class="meta">
+            <div>
+              <strong>Autoren</strong><br>
+              @for (author of b.authors; track author.id; let l = $last) {
+                {{ author.firstName }} {{ author.lastName }}@if(!l){, }
+              }
+            </div>
+            <div>
+              <strong>ISBN</strong><br>
+              {{ b.isbn }}
+            </div>
+            <div>
+              <strong>Erschienen</strong><br>
+              {{ b.published }}
+            </div>
+            <div>
+              <strong>Rating</strong><br>
+              @if (b.rating) {
+                @for (r of getRating(b.rating); track r) {
+                  <mat-icon color="warn">star</mat-icon>
+                }
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Description -->
+      <mat-divider class="divider"></mat-divider>
+      <div>
+        <div class="mat-subtitle-1"><strong>Beschreibung</strong></div>
+        <p>{{ b.description }}</p>
+      </div>
+      <!-- Thumbnails -->
+      <div class="thumbnails">
+        @for (thumbnail of b.images; track thumbnail) {
+          <img [src]="thumbnail.url" />
+        }
+      </div>
+      <!-- Back Button -->
+      <button mat-raised-button color="primary" (click)="showBookList()">
+        <mat-icon>arrow_back</mat-icon>
+        Zurück zur Buchliste
+      </button>
+    </mat-card-content>
+  </mat-card>
+}
+

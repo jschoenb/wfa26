@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, output} from '@angular/core';
 import {Author, Book, Image} from '../shared/book';
 import {MatCard, MatCardContent} from '@angular/material/card';
 import {BookListCard} from '../book-list-card/book-list-card';
@@ -42,5 +42,9 @@ export class BookList {
     )
   ];
 
+  showDetail = output<Book>()
 
+  protected showDetails(book: Book) {
+    this.showDetail.emit(book);
+  }
 }

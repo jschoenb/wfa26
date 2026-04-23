@@ -1,0 +1,41 @@
+.top-section {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+
+.cover {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+
+.content {
+  flex: 1;
+}
+
+
+.meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+
+.divider {
+  margin: 12px 0;
+}
+
+
+.thumbnails {
+  margin-top: 16px;
+}
+
+
+.thumbnails img {
+  width: 80px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
