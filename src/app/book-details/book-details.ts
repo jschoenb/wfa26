@@ -27,10 +27,11 @@ export class BookDetails {
   private bs = inject(BookStore);
   private route = inject(ActivatedRoute);
 
-  book = toSignal(this.route.paramMap.pipe(
-    map(params => params.get('isbn')),
-    switchMap(isbn=>this.bs.getSingle(isbn!))
-    ),{initialValue:null}
+  book = toSignal(
+    this.route.params.pipe(
+      switchMap(({ isbn }) => this.bs.getSingle(isbn))
+    ),
+    { initialValue: null }
   );
 
 
