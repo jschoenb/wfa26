@@ -40,7 +40,7 @@
             <div>
               <strong>Rating</strong><br>
               @if (b.rating) {
-                @for (r of getRating(b.rating); track r) {
+                @for (r of getRating(b.rating); track $index) {
                   <mat-icon color="warn">star</mat-icon>
                 }
               }
