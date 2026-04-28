@@ -1,0 +1,22 @@
+<mat-form-field appearance="outline">
+  <mat-label>Suche...</mat-label>
+  <input matInput
+         [matAutocomplete]="auto"
+         #searchTerm
+         (keyup)="update(searchTerm.value)">
+  <mat-icon matSuffix>search</mat-icon>
+
+  @if(isLoading){
+    <mat-progress-spinner matSuffix diameter="20" mode="indeterminate">
+    </mat-progress-spinner>
+  }
+</mat-form-field>
+
+<!--Dropdown -->
+<mat-autocomplete #auto="matAutocomplete">
+  @for(book of foundBooks(); track book.isbn){
+    <mat-option (onSelectionChange)="selectBook(book)">
+      {{book.title}}
+    </mat-option>
+  }
+</mat-autocomplete>

@@ -15,7 +15,7 @@
         <!-- Content -->
         <div class="content">
           <h1 class="mat-headline-medium primary-text" >
-            {{ b.title }}
+            {{ b.title | uppercase}}
           </h1>
           <h2 class="mat-title-medium secondary-text">
             {{ b.subtitle }}
@@ -35,7 +35,7 @@
             </div>
             <div>
               <strong>Erschienen</strong><br>
-              {{ b.published }}
+              {{ b.published | date: 'longDate'}}
             </div>
             <div>
               <strong>Rating</strong><br>
@@ -64,6 +64,12 @@
       <button mat-raised-button color="primary" [routerLink]="'/books'">
         <mat-icon>arrow_back</mat-icon>
         Zurück zur Buchliste
+      </button>
+
+      <!-- Delete Button -->
+      <button mat-raised-button color="warn" (click)="removeBook()">
+        <mat-icon>delete</mat-icon>
+        Löschen
       </button>
     </mat-card-content>
   </mat-card>

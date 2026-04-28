@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div>
+  <h1 class="mat-headline-1">Home</h1>
+  <p class="mat-body-large">Willkommen beim Bookstore!</p>
+
+  <button mat-raised-button color="primary" routerLink="/books">
+    Zur Buchliste
+  </button>
+  <bs-search (bookSelected)="bookSelected($event)"/>
+</div>

@@ -1,4 +1,18 @@
-<div class="book-list">
+@if(!books()){
+  <div class="loading-container">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Date werden geladen</p>
+  </div>
+}
+
+@if(books() && !books().length){
+  <mat-card>
+    <mat-card-content>
+      Es wurden keine Bücher (am Server) eingetragen!
+    </mat-card-content>
+  </mat-card>
+} @else {
+  <div class="book-list">
   @for (book of books(); track book.isbn) {
     <!--<bs-book-list-card [book]="book"></bs-book-list-card>-->
     <bs-book-list-card-slot [routerLink]="book.isbn">
@@ -21,7 +35,8 @@
         }
     </span>
 
-    <span meta>ISBN{{book.isbn}}</span>
+    <span meta>{{book.isbn | isbn:true}}</span>
   </bs-book-list-card-slot>
   }
 </div>
+}
