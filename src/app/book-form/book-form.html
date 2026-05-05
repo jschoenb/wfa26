@@ -1,1 +1,10 @@
-<p>book-form works!</p>
+<h1>Buchformular</h1>
+
+<form [formGroup]="bookForm" class="form-container">
+  <input type="hidden" formControlName="id">
+  <!-- Titel -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Buchtitel</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+</form>

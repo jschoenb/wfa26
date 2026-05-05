@@ -1,0 +1,30 @@
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.images-section {
+  margin-top: 16px;
+}
+
+.image-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.image-url {
+  flex: 2;
+}
+
+.image-title {
+  flex: 1;
+}
