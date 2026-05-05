@@ -11,6 +11,12 @@
      #rlaBooks ="routerLinkActive"
      [active]="rlaBooks.isActive"
   >Bücher</a>
+  <a mat-tab-link
+     routerLink="/admin"
+     routerLinkActive
+     #rlaAdmin ="routerLinkActive"
+     [active]="rlaAdmin.isActive"
+  >Administration</a>
 </nav>
 
 <mat-tab-nav-panel #tabPanel>

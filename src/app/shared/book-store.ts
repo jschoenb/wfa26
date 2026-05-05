@@ -26,6 +26,16 @@ export class BookStore {
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
+  create(book: Book):Observable<any>{
+    return this.http.post(`${this.api}/books/`,book)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  update(book:Book):Observable<any>{
+    return this.http.put(`${this.api}/books/${book.isbn}`,book)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
   getAllSearch(searchTerm:string):Observable<Array<Book>> {
   return this.http.get<Array<Book>>(`${this.api}/books/search/${searchTerm}`)
     .pipe(retry(3)).pipe(catchError(this.errorHandler))
