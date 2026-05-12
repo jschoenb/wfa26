@@ -10,6 +10,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {map, switchMap} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {DatePipe, UpperCasePipe} from '@angular/common';
+import {Authentication} from '../shared/authentication';
 
 @Component({
   selector: 'bs-book-details',
@@ -39,6 +40,7 @@ export class BookDetails {
     ),
     { initialValue: null }
   );
+  protected authService= inject(Authentication);
 
   getRating(num: number) {
     return Array.from({length:num})

@@ -66,6 +66,8 @@
         Zurück zur Buchliste
       </button>
 
+      @if(authService.isLoggedIn()){
+
       <!-- Delete Button -->
       <button mat-raised-button color="warn" (click)="removeBook()">
         <mat-icon>delete</mat-icon>
@@ -77,6 +79,7 @@
         <mat-icon>edit</mat-icon>
         Buch bearbeiten
       </button>
+      }
     </mat-card-content>
   </mat-card>
 

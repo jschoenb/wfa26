@@ -1,0 +1,57 @@
+@if(!isLoggedIn()){
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="outline">
+          <mat-label>E-Mail</mat-label>
+          <input matInput type="email" formControlName="username">
+
+
+          @if (loginForm.get('username')?.hasError('required') &&
+          (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)) {
+            <mat-error>Benutzername ist verpflichtend</mat-error>
+          }
+
+
+          @if (loginForm.get('username')?.hasError('email') &&
+          (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)) {
+            <mat-error>E-Mail Format überprüfen</mat-error>
+          }
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Passwort</mat-label>
+          <input matInput type="password" formControlName="password">
+
+
+          @if (loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)) {
+            <mat-error>Passwort ist verpflichtend</mat-error>
+          }
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="loginForm.invalid">
+          Login
+        </button>
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+}
+
+
+@if (isLoggedIn()) {
+  <mat-card>
+    <mat-card-content>
+      <button mat-raised-button color="warn" (click)="logout()">
+        Logout
+      </button>
+    </mat-card-content>
+  </mat-card>
+}
+

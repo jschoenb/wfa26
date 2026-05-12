@@ -141,7 +141,7 @@ export class BookForm {
         this.router.navigate(['../../books/',book.isbn],{relativeTo:this.route})
       })
     } else {
-      book.user_id = 1; // TODO Hack
+      book.user_id = Number(sessionStorage.getItem("userId") ?? 1);
       this.bs.create(book).subscribe(()=>{
         this.book.set(BookFactory.empty());
         this.router.navigate(['../books/'],{relativeTo:this.route})
