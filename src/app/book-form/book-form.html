@@ -1,10 +1,92 @@
 <h1>Buchformular</h1>
 
-<form [formGroup]="bookForm" class="form-container">
+<form [formGroup]="bookForm" class="form-container" (ngSubmit)="submitForm()">
   <input type="hidden" formControlName="id">
   <!-- Titel -->
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Buchtitel</mat-label>
     <input matInput formControlName="title">
+    @if(errors['title']){
+      <mat-error>{{errors['title']}}</mat-error>
+    }
   </mat-form-field>
+  <!-- Untertitel -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Untertitel</mat-label>
+    <input matInput formControlName="subtitle">
+  </mat-form-field>
+
+  <!-- ISBN -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>ISBN-Nummer</mat-label>
+    <input matInput formControlName="isbn">
+    @if(errors['isbn']){
+      <mat-error>{{errors['isbn']}}</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Datum -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Erscheingungsdatum</mat-label>
+    <input matInput type="date" formControlName="published">
+    @if(errors['published']){
+      <mat-error>{{errors['published']}}</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Description -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Beschreibung</mat-label>
+    <textarea matInput rows="3" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <!-- Rating -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Rating</mat-label>
+    <input matInput type="number" formControlName="rating">
+    @if(errors['rating']){
+      <mat-error>{{errors['rating']}}</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Bilder -->
+  <div formArrayName="images" class="images-section">
+    <h3>Bilder</h3>
+    @for(control of this.images.controls; let i = $index; let l = $last; track control.value.id) {
+      <div class="image-row" [formGroupName]="i">
+        <input type="hidden" formControlName="id">
+        <mat-form-field appearance="outline" class="image-url">
+          <mat-label>Bild URL {{ i + 1 }}</mat-label>
+          <input matInput formControlName="url">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="image-title">
+          <mat-label>Titel</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+
+        <!-- ❌ Entfernen -->
+        @if (images.length > 1) {
+          <button mat-icon-button color="warn" type="button"
+                  (click)="removeThumbnailControl(i)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        }
+
+        @if (l) {
+          <button mat-icon-button color="primary" type="button" (click)="addThumbnailControl()">
+            +
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+
+  <!-- Submit -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
+    Speichern
+  </button>
+
 </form>

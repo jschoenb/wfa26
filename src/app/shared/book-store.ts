@@ -27,7 +27,7 @@ export class BookStore {
   }
 
   create(book: Book):Observable<any>{
-    return this.http.post(`${this.api}/books/`,book)
+    return this.http.post(`${this.api}/books`,book)
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
@@ -39,6 +39,11 @@ export class BookStore {
   getAllSearch(searchTerm:string):Observable<Array<Book>> {
   return this.http.get<Array<Book>>(`${this.api}/books/search/${searchTerm}`)
     .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  check(isbn:string):Observable<Boolean>{
+    return this.http.get<Boolean>(`${this.api}/books/checkisbn/${isbn}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
   private errorHandler(error:Error | any): Observable<any>{
